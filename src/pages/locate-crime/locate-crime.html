@@ -1,0 +1,22 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{tags.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-fab bottom right>
+    <button ion-fab color="dark" (click)="centerLocation()">
+      <ion-icon name="locate"></ion-icon>
+    </button>
+  </ion-fab>
+  <div #map id="map"></div> 
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button [disabled]="!locationMarker" (click)="locationConfirmed()">{{tags.selectBtnLabel}}</button>
+  </ion-toolbar>
+</ion-footer>

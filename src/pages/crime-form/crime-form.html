@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{tags.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p>{{tags.intro}}</p>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>{{tags.selectCategoryLabel}}</ion-label>
+      <ion-select [(ngModel)]="form.category">
+        <ion-option *ngFor="let option of crimeOptions"
+        (ionSelect)="crimeTypeSelectionChanged(option)"
+        value="{{option.value}}">{{option.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="buttonset">
+    <button ion-button icon-right *ngIf="!form.location" (click)="selectLocation()">
+      {{tags.selectLocationLabel}}
+      <ion-icon name="map"></ion-icon>
+    </button>
+
+    <button ion-button color="secondary" *ngIf="form.location" icon-right (click)="selectLocation()">
+      {{tags.modifyLocationLabel}}
+      <ion-icon name="map"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button [disabled]="!form.location || !form.category" (click)="reportCrime()">{{tags.reportBtnLabel}}</button>
+  </ion-toolbar>
+</ion-footer>
